@@ -1,3 +1,5 @@
+![Tests & deploy](https://github.com/ariel17/efimeral-web/actions/workflows/deploy.yml/badge.svg)
+
 # Efimeral Web
 
 It is a very simple React application that access the API to obtain a container
