@@ -28,7 +28,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-${{ matrix.node-version }}
-          path: build
+          # Path needs to be complete here! See: https://stackoverflow.com/questions/67831018/github-actions-upload-artifact-not-finding-provided-path-from-npm-run-build  
+          path: ./efimeral/build
           retention-days: 5
 
   deploy:
@@ -47,4 +48,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./build    
+          publish_dir: .
