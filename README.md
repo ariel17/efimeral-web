@@ -14,4 +14,4 @@ URL and integrate it as an iframe.
 ## Related projects
 
 * [Efimeral images](https://github.com/ariel17/efimeral-images)
-* [Efimeral infrastructure](https://github.com/ariel17/efimeral-infra)
+* [Efimeral API](https://github.com/ariel17/efimeral-api)
