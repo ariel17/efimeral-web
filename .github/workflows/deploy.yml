@@ -1,6 +1,6 @@
 defaults:
   run:
-    working-directory: efimeral
+    working-directory: web
 
 on: [push]
 jobs:
@@ -33,7 +33,7 @@ jobs:
         with:
           name: build-${{ matrix.node-version }}
           # Path needs to be complete here! See: https://stackoverflow.com/questions/67831018/github-actions-upload-artifact-not-finding-provided-path-from-npm-run-build  
-          path: ./efimeral/build
+          path: ./web/build
           retention-days: 5
 
   deploy:
