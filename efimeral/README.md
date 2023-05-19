@@ -9,6 +9,7 @@ Use `.env.local` for development:
 ```bash
 REACT_APP_API_URL=http://production.url
 REACT_APP_API_TIMEOUT=60000
+REACT_APP_SENTRY_DSN=https://aaa@bbb.ingest.sentry.io/ccc
 ```
 
 ## Available Scripts
