@@ -12,6 +12,13 @@ REACT_APP_API_TIMEOUT=60000
 REACT_APP_SENTRY_DSN=https://aaa@bbb.ingest.sentry.io/ccc
 ```
 
+## Use the mock server on development
+
+A mock server that simulates response times and body as Efimeral API does is
+located at `../mock`. It's handy to not bring up all infrastructure just to
+test the web app integration. Follow the instructions on its README, it is raw
+simple.
+
 ## Available Scripts
 
 In the project directory, you can run:
