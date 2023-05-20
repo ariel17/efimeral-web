@@ -1,4 +1,4 @@
-![Tests & deploy](https://github.com/ariel17/efimeral-web/actions/workflows/deploy.yml/badge.svg)
+![Tests & deploy](https://github.com/ariel17/efimeral-web/actions/workflows/deploy.yml/badge.svg) ![CDK tests](https://github.com/ariel17/efimeral-web/actions/workflows/cdk.yml/badge.svg)
 
 # Efimeral Web
 
