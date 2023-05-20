@@ -24,12 +24,6 @@ export class WebStack extends cdk.Stack {
       ),
     });
 
-    new route53.CnameRecord(this, 'cname-record', {
-      zone: zone,
-      recordName: domainName,
-      domainName: 'ariel17.github.io', 
-    });
-
     new cdk.CfnOutput(this, 'ns-servers', {
       description: 'NS servers',
       value: cdk.Fn.join(',', zone.hostedZoneNameServers || []),
