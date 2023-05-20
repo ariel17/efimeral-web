@@ -13,7 +13,7 @@ export class WebStack extends cdk.Stack {
       zoneName: domainName,
     });
 
-    new route53.ARecord(this, 'cname-web', {
+    new route53.ARecord(this, 'a-record', {
       zone: zone,
       recordName: domainName,
       target: route53.RecordTarget.fromIpAddresses(
@@ -22,6 +22,12 @@ export class WebStack extends cdk.Stack {
         '185.199.110.153',
         '185.199.111.153',
       ),
+    });
+
+    new route53.CnameRecord(this, 'cname-record', {
+      zone: zone,
+      recordName: domainName,
+      domainName: 'ariel17.github.io', 
     });
 
     new cdk.CfnOutput(this, 'ns-servers', {

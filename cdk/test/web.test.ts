@@ -25,4 +25,13 @@ test('A registry created', () => {
     ],
     TTL: "1800",
   });
+
+  template.hasResourceProperties('AWS::Route53::RecordSet', {
+    Name: WebStack.domainName+'.',
+    Type: 'CNAME',
+    ResourceRecords: [
+        'ariel17.github.io',
+    ],
+    TTL: "1800",
+  });
 });
