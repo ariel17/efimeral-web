@@ -1,7 +1,7 @@
 # Mock server for Efimeral web application
 
 The mock server will return a similar body response as API does when creating
-a new container. Response times are between 20 and 60 seconds to simulate the
+a new container. Response times are between 5 and 15 seconds to simulate the
 Fargate times to be up and running.
 
 ```bash

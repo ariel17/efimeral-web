@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors')
 var app = express();
 
 const urls = [
@@ -9,8 +10,9 @@ const urls = [
     'https://news.ycombinator.com/',
 ];
 
-app.post('/', function (req, res) {
-    const sleep = Math.floor(Math.random() * 60000) + 10000;
+app.use(cors());
+app.post('/prod/', function (req, res) {
+    const sleep = Math.floor(Math.random() * 5000) + 15000;
     const index = Math.floor(Math.random() * urls.length)
     setTimeout(() => {
         res.json({
