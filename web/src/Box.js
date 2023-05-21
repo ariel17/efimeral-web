@@ -1,5 +1,10 @@
 import { Component } from "react";
 
+
+const iframeStyles = {
+  border: 0,
+}
+
 class Box extends Component {
 
     constructor(props) {
@@ -9,7 +14,13 @@ class Box extends Component {
 
     render() {
         return (
-            <iframe data-testid="box" title="Box" width="100%" height="1000" src={this.props.containerURL } style={{border: 0, }}>
+            <iframe
+                data-testid="box"
+                title="Box"
+                width="100%"
+                height="100vh"
+                src={this.props.containerURL }
+                style={iframeStyles}>
             </iframe>
         );
     }
