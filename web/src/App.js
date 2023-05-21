@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import './App.css';
-import SquareLoader from "react-spinners/SquareLoader";
 import Box from './Box';
+import Loader from './Loader';
 import axios from 'axios';
 
 
@@ -44,7 +44,7 @@ class App extends Component {
     render() {
         if (this.state.loading) {
             return (
-                <SquareLoader data-testid="spinner" color="#AABBCC" loading="true" size="150px" aria-label="Loading" />
+                <Loader />
             );
         }
         if (!this.state.loading && this.state.containerURL) {
