@@ -5,9 +5,6 @@ var app = express();
 const urls = [
     'http://ariel17.com.ar',
     'http://ariel17.com.ar/uncuentoporsemana',
-    'https://google.com',
-    'https://reddit.com',
-    'https://news.ycombinator.com/',
 ];
 
 app.use(cors());
