@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Container from 'react-bootstrap/Container';
 
 
 const iframeStyles = {
@@ -14,14 +15,16 @@ class Box extends Component {
 
     render() {
         return (
-            <iframe
-                data-testid="box"
-                title="Box"
-                width="100%"
-                height="100vh"
-                src={this.props.containerURL }
-                style={iframeStyles}>
-            </iframe>
+            <Container fluid>
+                <iframe
+                    data-testid="box"
+                    title="Box"
+                    width="100%"
+                    height="1000vh"
+                    src={this.props.containerURL }
+                    style={iframeStyles}>
+                </iframe>
+            </Container>
         );
     }
 }

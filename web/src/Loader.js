@@ -1,5 +1,6 @@
 import { Component } from "react";
 import SquareLoader from "react-spinners/SquareLoader";
+import Container from 'react-bootstrap/Container';
 
 
 const override = {
@@ -8,11 +9,11 @@ const override = {
   borderColor: "red",
 };
 
-const divStyle = {
+const containerStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh',
+    height: '50vh',
 }
 
 class Loader extends Component {
@@ -24,7 +25,7 @@ class Loader extends Component {
 
     render() {
         return (
-            <div style={divStyle}>
+            <Container fluid style={containerStyle}>
                 <SquareLoader
                     data-testid="spinner"
                     color="#AA3939"
@@ -32,7 +33,7 @@ class Loader extends Component {
                     loading="true"
                     size="50"
                     aria-label="Loading" />
-            </div>
+            </Container>
         );
     }
 }
