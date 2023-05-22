@@ -30,7 +30,7 @@ class Loader extends Component {
                     color="#AA3939"
                     cssOverride={override}
                     loading="true"
-                    size="50"
+                    size="50px"
                     aria-label="Loading" />
             </div>
         );
