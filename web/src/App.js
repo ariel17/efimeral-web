@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './App.css';
 import Box from './Box';
 import Loader from './Loader';
+import Ribbon from './Ribbon';
 import axios from 'axios';
 
 
@@ -42,20 +43,22 @@ class App extends Component {
     }
 
     render() {
+        
+        let component;
         if (this.state.loading) {
-            return (
-                <Loader />
-            );
+            component = <Loader />;
+        } else if (!this.state.loading && this.state.containerURL) {
+            component = <Box containerURL={this.state.containerURL} />;
+        } else {
+            component = <div>{this.state.error}</div>;
         }
-        if (!this.state.loading && this.state.containerURL) {
-            return (
-                <Box containerURL={this.state.containerURL} />
-            );
-        } 
 
         return (
-          <div>{this.state.error}</div>
-        );
+          <>
+            <Ribbon url="https://github.com/ariel17/efimeral-web" />
+            {component}
+          </>
+        )
     }
 }
 
