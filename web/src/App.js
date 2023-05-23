@@ -3,6 +3,7 @@ import './App.css';
 import Box from './Box';
 import Loader from './Loader';
 import ENavbar from './ENavbar';
+import EError from './EError';
 import axios from 'axios';
 
 
@@ -18,6 +19,19 @@ class App extends Component {
     }
 
     componentDidMount() {
+      if (process.env.REACT_APP_FORCED_STATE === "loading") {
+        return;
+      }
+      if (process.env.REACT_APP_FORCED_STATE === "error") {
+        this._mounted = true;
+        this.setState({
+          loading: false,
+          containerURL: undefined,
+          error: new Error("Mocked error description"),
+        });
+        return;
+      }
+
       if (this._mounted) {
         return;
       }
@@ -49,7 +63,7 @@ class App extends Component {
         } else if (!this.state.loading && this.state.containerURL) {
             component = <Box containerURL={this.state.containerURL} />;
         } else {
-            component = <div>{this.state.error}</div>;
+            component = <EError error={this.state.error}></EError>;
         }
 
         return (
