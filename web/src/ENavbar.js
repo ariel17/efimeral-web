@@ -49,8 +49,7 @@ class ENavbar extends Component {
 function newBox() {
   ReactGA4.event({
     category: 'Refresh',
-    action: 'Completed',
-    label: 'New-box',
+    action: 'New-box',
   }); 
   window.location.reload(true);
 }
@@ -58,8 +57,7 @@ function newBox() {
 function SignInModal(props) {
   ReactGA4.event({
     category: 'Modal',
-    action: 'Completed',
-    label: 'Sign-in',
+    action: 'Sign-in',
   });
 
   return (
@@ -85,8 +83,7 @@ function SignInModal(props) {
 function AboutModal(props) {
   ReactGA4.event({
     category: 'Modal',
-    action: 'Completed',
-    label: 'About',
+    action: 'About',
   });
 
   return (
@@ -100,7 +97,10 @@ function AboutModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">What's this?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>This is a full description of the project. Maybe some images? Oh, and link to the repo!</p>
+        <h4>Efimeral</h4>
+        <p>Linux boxes in your browser.</p>
+        <p>Non-root, time limited. Side-project. All the love ❤️</p>
+        <p><a href="http://github.com/ariel17/efimeral-web">See it on GitHub.</a></p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
