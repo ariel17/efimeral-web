@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/efimeral-web/static/css/main.4918a627.css",
-    "main.js": "/efimeral-web/static/js/main.fc89cc33.js",
+    "main.js": "/efimeral-web/static/js/main.a5872f6c.js",
     "static/js/787.a1371414.chunk.js": "/efimeral-web/static/js/787.a1371414.chunk.js",
     "static/media/cubic.ttf": "/efimeral-web/static/media/cubic.7bbab01a8037a9dce2a9.ttf",
     "index.html": "/efimeral-web/index.html",
     "main.4918a627.css.map": "/efimeral-web/static/css/main.4918a627.css.map",
-    "main.fc89cc33.js.map": "/efimeral-web/static/js/main.fc89cc33.js.map",
+    "main.a5872f6c.js.map": "/efimeral-web/static/js/main.a5872f6c.js.map",
     "787.a1371414.chunk.js.map": "/efimeral-web/static/js/787.a1371414.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4918a627.css",
-    "static/js/main.fc89cc33.js"
+    "static/js/main.a5872f6c.js"
   ]
 }
