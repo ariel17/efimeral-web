@@ -46,18 +46,18 @@ class ENavbar extends Component {
 
 function newBox() {
   ReactGA4.event({
-    category: 'new-box',
+    category: 'Refresh',
     action: 'Completed',
-    label: 'refresh',
+    label: 'New-box',
   }); 
   window.location.reload(true);
 }
 
 function SignInModal(props) {
   ReactGA4.event({
-    category: 'sign-in',
+    category: 'Modal',
     action: 'Completed',
-    label: 'modal',
+    label: 'Sign-in',
   });
 
   return (
@@ -82,9 +82,9 @@ function SignInModal(props) {
 
 function AboutModal(props) {
   ReactGA4.event({
-    category: 'about',
+    category: 'Modal',
     action: 'Completed',
-    label: 'modal',
+    label: 'About',
   });
 
   return (
