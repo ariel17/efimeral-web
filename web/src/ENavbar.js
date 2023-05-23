@@ -5,6 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReactGA4 from "react-ga4";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faCircleInfo, faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 class ENavbar extends Component {
@@ -25,9 +27,9 @@ class ENavbar extends Component {
               <Container>
                 <Navbar.Brand href="/">Efimeral</Navbar.Brand>
                 <Nav className="justify-content-end">
-                  <Nav.Link href="#new" onClick={() => newBox()}>New box</Nav.Link>
-                  <Nav.Link href="#about" onClick={() => this.setState({showAboutModal: true})}>What's this?</Nav.Link>
-                  <Nav.Link href="#signin" onClick={() => this.setState({showSignInModal: true})}>Sign in</Nav.Link>
+                  <Nav.Link title="New box" onClick={() => newBox()}><FontAwesomeIcon icon={faPlus} /></Nav.Link>
+                  <Nav.Link title="What's this?" onClick={() => this.setState({showAboutModal: true})}><FontAwesomeIcon icon={faCircleInfo} /></Nav.Link>
+                  <Nav.Link title="Sign in" onClick={() => this.setState({showSignInModal: true})}><FontAwesomeIcon icon={faUser} /></Nav.Link>
                 </Nav>
               </Container>
             </Navbar>
