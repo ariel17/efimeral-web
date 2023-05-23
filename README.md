@@ -9,7 +9,7 @@ URL and integrate it as an iframe.
 
 ![Architecture diagram](./docs/architecture.png)
 
-## Tech stack
+## Tech stack
 
 * create-react-app
 * Font Awesome
