@@ -1,5 +1,7 @@
 ![Tests & deploy](https://github.com/ariel17/efimeral-web/actions/workflows/deploy.yml/badge.svg) ![CDK tests](https://github.com/ariel17/efimeral-web/actions/workflows/cdk.yml/badge.svg)
 
+![Logo](./docs/logo.png)
+
 # Efimeral Web
 
 It is a very simple React application that access the API to obtain a container
