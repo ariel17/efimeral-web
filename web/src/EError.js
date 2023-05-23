@@ -31,6 +31,7 @@ class EError extends Component {
                     <FontAwesomeIcon icon={faSkull} className="fa-10x" />
                 </Row>
                 <Row className="text-center" style={rowTextStyle}>
+                    <p className="error-xl">500</p>
                     <p className="error">Something terrible had happened, Yisus...</p>
                     <p>{ String(this.props.error) }</p>
                 </Row>

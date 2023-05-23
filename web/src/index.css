@@ -26,8 +26,12 @@ body {
   font-family: 'Cubic';
 }
 
+.error-xl {
+  font-size: 4em;
+}
+
 .error {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .loader-text {
