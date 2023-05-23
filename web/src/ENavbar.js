@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import ReactGA4 from "react-ga4";
 
 
 class ENavbar extends Component {
@@ -24,7 +25,7 @@ class ENavbar extends Component {
               <Container>
                 <Navbar.Brand href="/">Efimeral</Navbar.Brand>
                 <Nav className="justify-content-end">
-                  <Nav.Link href="/">New box</Nav.Link>
+                  <Nav.Link href="#new" onClick={() => newBox()}>New box</Nav.Link>
                   <Nav.Link href="#about" onClick={() => this.setState({showAboutModal: true})}>What's this?</Nav.Link>
                   <Nav.Link href="#signin" onClick={() => this.setState({showSignInModal: true})}>Sign in</Nav.Link>
                 </Nav>
@@ -43,7 +44,22 @@ class ENavbar extends Component {
     }
 }
 
+function newBox() {
+  ReactGA4.event({
+    category: 'new-box',
+    action: 'Completed',
+    label: 'refresh',
+  }); 
+  window.location.reload(true);
+}
+
 function SignInModal(props) {
+  ReactGA4.event({
+    category: 'sign-in',
+    action: 'Completed',
+    label: 'modal',
+  });
+
   return (
     <Modal
       {...props}
@@ -65,6 +81,12 @@ function SignInModal(props) {
 }
 
 function AboutModal(props) {
+  ReactGA4.event({
+    category: 'about',
+    action: 'Completed',
+    label: 'modal',
+  });
+
   return (
     <Modal
       {...props}
