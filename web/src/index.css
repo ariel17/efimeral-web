@@ -9,17 +9,25 @@ body {
   padding-top: 50px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .nav-link {
   padding-right: 40px !important;
 }
 
 .fluid-container {
   height:100% !important;
+}
+
+@font-face {
+  font-family: 'Cubic';
+  src: local('Cubic'), url('./fonts/cubic.ttf') format("truetype");
+}
+
+.navbar-brand {
+  font-family: 'Cubic';
+}
+
+h4 {
+  font-family: 'Cubic';
 }
 
 /* CSS - Cascading Style Sheet */
