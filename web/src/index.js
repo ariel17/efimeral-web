@@ -5,6 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from "@sentry/react";
+import ReactGA from "react-ga4";
+
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -17,13 +19,25 @@ Sentry.init({
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+ReactGA.initialize(process.env.REACT_APP_GA_ID);
 root.render(
   <React.StrictMode>
-    <App apiURL={process.env.REACT_APP_API_URL} apiTimeout={process.env.REACT_APP_API_TIMEOUT}/>
+    <App
+      apiURL={process.env.REACT_APP_API_URL}
+      apiTimeout={process.env.REACT_APP_API_TIMEOUT}
+    />
+    
   </React.StrictMode>
 );
+
+const sendAnalytics = ()=> {
+  ReactGA.send({
+    hitType: "pageview",
+    page: window.location.pathname,
+  });
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(sendAnalytics);
