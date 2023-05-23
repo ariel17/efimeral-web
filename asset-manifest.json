@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/efimeral-web/static/css/main.5edeccf1.css",
-    "main.js": "/efimeral-web/static/js/main.d61a2b53.js",
+    "main.css": "/efimeral-web/static/css/main.daa4f012.css",
+    "main.js": "/efimeral-web/static/js/main.8cd31f8a.js",
     "static/js/496.89899f97.chunk.js": "/efimeral-web/static/js/496.89899f97.chunk.js",
     "static/media/cubic.ttf": "/efimeral-web/static/media/cubic.7bbab01a8037a9dce2a9.ttf",
     "index.html": "/efimeral-web/index.html",
-    "main.5edeccf1.css.map": "/efimeral-web/static/css/main.5edeccf1.css.map",
-    "main.d61a2b53.js.map": "/efimeral-web/static/js/main.d61a2b53.js.map",
+    "main.daa4f012.css.map": "/efimeral-web/static/css/main.daa4f012.css.map",
+    "main.8cd31f8a.js.map": "/efimeral-web/static/js/main.8cd31f8a.js.map",
     "496.89899f97.chunk.js.map": "/efimeral-web/static/js/496.89899f97.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5edeccf1.css",
-    "static/js/main.d61a2b53.js"
+    "static/css/main.daa4f012.css",
+    "static/js/main.8cd31f8a.js"
   ]
 }
