@@ -63,7 +63,6 @@ function SignInModal(props) {
   return (
     <Modal
       {...props}
-      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -89,7 +88,6 @@ function AboutModal(props) {
   return (
     <Modal
       {...props}
-      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -100,7 +98,7 @@ function AboutModal(props) {
         <h4>Efimeral</h4>
         <p>Linux boxes in your browser.</p>
         <p>Non-root, time limited. Side-project. All the love ❤️</p>
-        <p><a href="http://github.com/ariel17/efimeral-web">See it on GitHub.</a></p>
+        <p><a href="http://github.com/ariel17/efimeral-web" className="link-dark">See it on GitHub.</a></p>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>

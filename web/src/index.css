@@ -38,6 +38,27 @@ h4 {
   font-family: 'Cubic';
 }
 
+.modal-content {
+  background-color: #FFAAAA;
+  color: #550000;
+}
+
+.modal-content > a {
+  color: #550000;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #AA3939 !important;
+}
+
+.modal-header {
+  border-bottom: unset !important;
+}
+
+.modal-footer {
+  border-top: unset !important;
+}
+
 /* CSS - Cascading Style Sheet */
 /* Palette color codes */
 /* Palette URL: http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF */
