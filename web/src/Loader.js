@@ -1,6 +1,7 @@
 import { Component } from "react";
 import SquareLoader from "react-spinners/SquareLoader";
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 
 const override = {
@@ -9,11 +10,13 @@ const override = {
   borderColor: "red",
 };
 
-const containerStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '50vh',
+const rowSpinnerStyle = {
+    'padding-top': '300px',
+    'padding-bottom': '60px',
+}
+
+const rowTextStyle = {
+    color: '#FFAAAA',
 }
 
 class Loader extends Component {
@@ -25,14 +28,19 @@ class Loader extends Component {
 
     render() {
         return (
-            <Container fluid style={containerStyle}>
-                <SquareLoader
-                    data-testid="spinner"
-                    color="#AA3939"
-                    cssOverride={override}
-                    loading="true"
-                    size="50"
-                    aria-label="Loading" />
+            <Container fluid className="fill-height">
+                <Row lg="auto" style={rowSpinnerStyle}>
+                    <SquareLoader
+                        data-testid="spinner"
+                        color="#AA3939"
+                        cssOverride={override}
+                        loading="true"
+                        size="50"
+                        aria-label="Loading" />
+                </Row>
+                <Row className="text-center" style={rowTextStyle}>
+                    <p>Box is being created. Please be patient.</p>
+                </Row>
             </Container>
         );
     }
