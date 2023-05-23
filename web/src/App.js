@@ -2,6 +2,7 @@ import { Component } from 'react';
 import './App.css';
 import Box from './Box';
 import Loader from './Loader';
+import ENavbar from './ENavbar';
 import Ribbon from './Ribbon';
 import axios from 'axios';
 
@@ -43,7 +44,6 @@ class App extends Component {
     }
 
     render() {
-        
         let component;
         if (this.state.loading) {
             component = <Loader />;
@@ -55,10 +55,11 @@ class App extends Component {
 
         return (
           <>
+            <ENavbar />
             <Ribbon url="https://github.com/ariel17/efimeral-web" />
             {component}
           </>
-        )
+        );
     }
 }
 
