@@ -7,6 +7,15 @@ URL and integrate it as an iframe.
 
 ![Architecture diagram](./docs/architecture.png)
 
+## Tech stack
+
+* create-react-app
+* Font Awesome
+* Google Analytics
+* Bootstrap v5
+* react-spinners
+* axios
+
 ## Resources
 
 * [Deploy React App using GitHub Actions](https://dev.to/achukka/deploy-react-app-using-github-actions-157d)
