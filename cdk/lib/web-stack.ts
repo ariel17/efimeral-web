@@ -5,6 +5,12 @@ import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 
 
 export const domainName = 'efimeral.ar';
+export const gitHubIPs = [
+  '185.199.108.153',
+  '185.199.109.153',
+  '185.199.110.153',
+  '185.199.111.153',
+]
 
 export class WebStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -24,15 +30,16 @@ export class WebStack extends cdk.Stack {
       validation: acm.CertificateValidation.fromDns(zone),
     });
 
-    new route53.ARecord(this, 'a-record', {
+    const rootARecord = new route53.ARecord(this, 'root-a-record', {
       zone: zone,
       recordName: domainName,
-      target: route53.RecordTarget.fromIpAddresses(
-        '185.199.108.153',
-        '185.199.109.153',
-        '185.199.110.153',
-        '185.199.111.153',
-      ),
+      target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
+    });
+
+    new route53.ARecord(this, 'www-a-record', {
+      zone: zone,
+      recordName: 'www.'+domainName,
+      target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
     });
 
     new cdk.CfnOutput(this, 'ns-servers', {
