@@ -13,6 +13,11 @@ export class WebStack extends cdk.Stack {
       zoneName: domainName,
     });
 
+    new cdk.CfnOutput(this, 'hosted-zone-id', {
+      description: 'HostedZoneId',
+      value: zone.hostedZoneId,
+    });
+
     new route53.ARecord(this, 'a-record', {
       zone: zone,
       recordName: domainName,
@@ -25,7 +30,7 @@ export class WebStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, 'ns-servers', {
-      description: 'NS servers',
+      description: 'NSServers',
       value: cdk.Fn.join(',', zone.hostedZoneNameServers || []),
     });
   }
