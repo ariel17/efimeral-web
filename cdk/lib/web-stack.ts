@@ -1,7 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as route53 from 'aws-cdk-lib/aws-route53';
-import * as acm from 'aws-cdk-lib/aws-certificatemanager';
 
 
 export const domainName = 'efimeral.ar';
@@ -25,12 +24,7 @@ export class WebStack extends cdk.Stack {
       value: zone.hostedZoneId,
     });
     
-   new acm.Certificate(this, 'web-certificate', {
-      domainName: domainName,
-      validation: acm.CertificateValidation.fromDns(zone),
-    });
-
-    const rootARecord = new route53.ARecord(this, 'root-a-record', {
+    new route53.ARecord(this, 'root-a-record', {
       zone: zone,
       recordName: domainName,
       target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
