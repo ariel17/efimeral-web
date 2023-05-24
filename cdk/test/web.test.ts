@@ -14,6 +14,11 @@ test('A registry created', () => {
     Name: WebStack.domainName+'.',
   });
 
+  template.hasResourceProperties('AWS::CertificateManager::Certificate', {
+    DomainName: WebStack.domainName,
+    ValidationMethod: 'DNS',
+  });
+
   template.hasResourceProperties('AWS::Route53::RecordSet', {
     Name: WebStack.domainName+'.',
     Type: 'A',
