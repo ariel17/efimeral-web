@@ -39,7 +39,7 @@ class Loader extends Component {
                         aria-label="Loading" />
                 </Row>
                 <Row className="text-center" style={rowTextStyle}>
-                    <p className="loader-text">Box is being created. Please be patient.</p>
+                    <p className="loader-text">Box is being created; it can take up to 40 seconds. Please be patient.</p>
                 </Row>
             </Container>
         );
