@@ -27,6 +27,7 @@ class App extends Component {
         this.setState({
           loading: false,
           containerURL: undefined,
+          statusCode: 500,
           error: new Error("Mocked error description"),
         });
         return;
@@ -41,15 +42,38 @@ class App extends Component {
         timeout: Number(this.props.apiTimeout),
       });
       instance.post('/prod/').then(response => {
+          if (response.data.statusCode >= 500) {
+            this.setState({
+              loading: false,
+              containerURL: response.data.url,
+              error: response.data.message,
+              statusCode: response.data.statusCode,
+            });
+            return;
+          }
+
+          if (response.data.statusCode >= 400 && response.data.statusCode < 500) {
+            this.setState({
+              loading: false,
+              containerURL: response.data.url,
+              error: response.data.message,
+              statusCode: response.data.statusCode,
+            });
+            return;
+          } 
+
           this.setState({
             loading: false,
             containerURL: response.data.url,
             error: undefined,
+            statusCode: 201,
           });
+
       }).catch(e => {
           this.setState({
             loading: false,
             containerURL: undefined,
+            statusCode: 500,
             error: String(e),
           });
           console.error('API error', e);
@@ -63,7 +87,7 @@ class App extends Component {
         } else if (!this.state.loading && this.state.containerURL) {
             component = <Box containerURL={this.state.containerURL} />;
         } else {
-            component = <EError error={this.state.error}></EError>;
+            component = <EError statusCode={this.state.statusCode} error={this.state.error}></EError>;
         }
 
         return (
