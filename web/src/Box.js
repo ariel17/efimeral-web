@@ -21,7 +21,7 @@ class Box extends Component {
                     data-testid="box"
                     title="Box"
                     width="100%"
-                    height="700vh"
+                    height="920vh"
                     src={this.props.containerURL }
                     style={iframeStyles}>
                 </iframe>
