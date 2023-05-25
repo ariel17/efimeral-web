@@ -24,11 +24,17 @@ export class WebStack extends cdk.Stack {
       value: zone.hostedZoneId,
     });
     
-    new route53.ARecord(this, 'root-a-record', {
+    new route53.CnameRecord(this, 'cname-record', {
       zone: zone,
-      recordName: domainName,
-      target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
+      recordName: 'www',
+      domainName: String(process.env.GITHUB_PAGES_DOMAIN),
     });
+
+    new route53.ARecord(this, 'a-record', {
+       zone: zone,
+       recordName: domainName,
+       target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
+     });
 
     new cdk.CfnOutput(this, 'ns-servers', {
       description: 'NSServers',
