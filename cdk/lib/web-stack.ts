@@ -4,6 +4,12 @@ import * as route53 from 'aws-cdk-lib/aws-route53';
 
 
 export const domainName = 'efimeral.ar';
+export const gitHubIPs = [
+  '185.199.108.153',
+  '185.199.109.153',
+  '185.199.110.153',
+  '185.199.111.153',
+]
 
 export class WebStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -17,16 +23,11 @@ export class WebStack extends cdk.Stack {
       description: 'HostedZoneId',
       value: zone.hostedZoneId,
     });
-
-    new route53.ARecord(this, 'a-record', {
+    
+    new route53.ARecord(this, 'root-a-record', {
       zone: zone,
       recordName: domainName,
-      target: route53.RecordTarget.fromIpAddresses(
-        '185.199.108.153',
-        '185.199.109.153',
-        '185.199.110.153',
-        '185.199.111.153',
-      ),
+      target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
     });
 
     new cdk.CfnOutput(this, 'ns-servers', {

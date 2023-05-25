@@ -17,12 +17,7 @@ test('A registry created', () => {
   template.hasResourceProperties('AWS::Route53::RecordSet', {
     Name: WebStack.domainName+'.',
     Type: 'A',
-    ResourceRecords: [
-        '185.199.108.153',
-        '185.199.109.153',
-        '185.199.110.153',
-        '185.199.111.153',
-    ],
+    ResourceRecords: WebStack.gitHubIPs,
     TTL: "1800",
   });
 });
