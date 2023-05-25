@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 const iframeStyles = {
   border: 0,
+  'margin-top': '5px',
 }
 
 class Box extends Component {
@@ -20,7 +21,7 @@ class Box extends Component {
                     data-testid="box"
                     title="Box"
                     width="100%"
-                    height="1000vh"
+                    height="700vh"
                     src={this.props.containerURL }
                     style={iframeStyles}>
                 </iframe>
