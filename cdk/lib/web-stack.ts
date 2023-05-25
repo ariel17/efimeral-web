@@ -30,12 +30,6 @@ export class WebStack extends cdk.Stack {
       target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
     });
 
-    new route53.ARecord(this, 'www-a-record', {
-      zone: zone,
-      recordName: 'www.'+domainName,
-      target: route53.RecordTarget.fromIpAddresses(...gitHubIPs),
-    });
-
     new cdk.CfnOutput(this, 'ns-servers', {
       description: 'NSServers',
       value: cdk.Fn.join(',', zone.hostedZoneNameServers || []),

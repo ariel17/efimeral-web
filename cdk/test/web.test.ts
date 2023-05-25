@@ -20,11 +20,4 @@ test('A registry created', () => {
     ResourceRecords: WebStack.gitHubIPs,
     TTL: "1800",
   });
-
-  template.hasResourceProperties('AWS::Route53::RecordSet', {
-    Name: 'www.'+WebStack.domainName+'.',
-    Type: 'A',
-    ResourceRecords: WebStack.gitHubIPs,
-    TTL: "1800",
-  });
 });
