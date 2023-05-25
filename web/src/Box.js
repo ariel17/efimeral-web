@@ -16,7 +16,7 @@ class Box extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <Container>
                 <iframe
                     data-testid="box"
                     title="Box"
