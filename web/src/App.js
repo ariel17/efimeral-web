@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import * as Sentry from "@sentry/react";
 import './App.css';
 import Box from './Box';
@@ -42,34 +43,28 @@ class App extends Component {
         baseURL: this.props.apiURL,
         timeout: Number(this.props.apiTimeout),
       });
-      instance.post('/prod/').then(response => {
-          if (response.data.statusCode >= 500) {
-            Sentry.captureMessage("API response 5xx", response.data);
+      instance.post('/prod/boxes/').then(postResponse => {
+
+          axiosRetry(instance, {
+            retries: 10, // number of retries
+            retryDelay: (retryCount) => {
+                console.log(`API check running box attempt: ${retryCount}`);
+                return retryCount * 1000; // time interval between retries
+            },
+            retryCondition: (error) => {
+                return error.response.status === 404;
+            },
+          });
+          instance.get(`/prod/boxes/${postResponse.data.box_id}`).then(getResponse => {
             this.setState({
               loading: false,
-              containerURL: response.data.url,
-              error: response.data.message,
-              statusCode: response.data.statusCode,
+              containerURL: getResponse.data.url,
+              error: undefined,
+              statusCode: getResponse.data.statusCode,
             });
-            return;
-          }
 
-          if (response.data.statusCode >= 400 && response.data.statusCode < 500) {
-            Sentry.captureMessage("API response 4xx", response.data);
-            this.setState({
-              loading: false,
-              containerURL: response.data.url,
-              error: response.data.message,
-              statusCode: response.data.statusCode,
-            });
-            return;
-          } 
-
-          this.setState({
-            loading: false,
-            containerURL: response.data.url,
-            error: undefined,
-            statusCode: 201,
+          }).catch(e => {
+            throw e;
           });
 
       }).catch(e => {
