@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 
 const iframeStyles = {
   border: 0,
-  'margin-top': '5px',
+  marginTop: '5px',
 }
 
 class Box extends Component {

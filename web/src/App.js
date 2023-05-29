@@ -80,7 +80,7 @@ class App extends Component {
             error: String(e),
           });
           console.error('API error', e);
-          Sentry.captureException(err);
+          Sentry.captureException(e);
       });
     }
 

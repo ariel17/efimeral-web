@@ -6,8 +6,8 @@ import { faSkull } from '@fortawesome/free-solid-svg-icons'
 
 
 const rowSpinnerStyle = {
-    'padding-top': '300px',
-    'padding-bottom': '60px',
+    paddingTop: '300px',
+    paddingBottom: '60px',
     color: '#FFAAAA',
     display: 'inline-block',
     width: '100%',

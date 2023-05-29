@@ -11,8 +11,8 @@ const override = {
 };
 
 const rowSpinnerStyle = {
-    'padding-top': '300px',
-    'padding-bottom': '60px',
+    paddingTop: '300px',
+    paddingBottom: '60px',
 }
 
 const rowTextStyle = {
@@ -35,7 +35,7 @@ class Loader extends Component {
                         color="#AA3939"
                         cssOverride={override}
                         loading="true"
-                        size="50"
+                        size="50px"
                         aria-label="Loading" />
                 </Row>
                 <Row className="text-center" style={rowTextStyle}>
