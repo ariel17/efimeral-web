@@ -63,11 +63,10 @@ function SignInModal(props) {
   return (
     <Modal
       {...props}
-      aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Sign in</Modal.Title>
+        <Modal.Title>Sign in</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p>Thank you for your interest! We haven't implemented this functionallity yet.</p>
@@ -88,11 +87,10 @@ function AboutModal(props) {
   return (
     <Modal
       {...props}
-      aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">What's this?</Modal.Title>
+        <Modal.Title>What's this?</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <h4>Efimeral</h4>
