@@ -1,10 +1,11 @@
 import { Component } from 'react';
+import axios from 'axios';
+import * as Sentry from "@sentry/react";
 import './App.css';
 import Box from './Box';
 import Loader from './Loader';
 import ENavbar from './ENavbar';
 import EError from './EError';
-import axios from 'axios';
 
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
       });
       instance.post('/prod/').then(response => {
           if (response.data.statusCode >= 500) {
+            Sentry.captureMessage("API response 5xx", response.data);
             this.setState({
               loading: false,
               containerURL: response.data.url,
@@ -53,6 +55,7 @@ class App extends Component {
           }
 
           if (response.data.statusCode >= 400 && response.data.statusCode < 500) {
+            Sentry.captureMessage("API response 4xx", response.data);
             this.setState({
               loading: false,
               containerURL: response.data.url,
@@ -77,6 +80,7 @@ class App extends Component {
             error: String(e),
           });
           console.error('API error', e);
+          Sentry.captureException(err);
       });
     }
 
