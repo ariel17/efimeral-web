@@ -2,7 +2,7 @@
   "name": "efimeral",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://efimeral.ar/",
+  "homepage": "http://efimeral.ar/",
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
