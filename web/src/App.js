@@ -71,7 +71,7 @@ class App extends Component {
           this.setState({
             loading: false,
             containerURL: undefined,
-            statusCode: 500,
+            statusCode: e.response?.status || e.code,
             error: String(e),
           });
           console.error('API error', e);
