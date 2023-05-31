@@ -17,32 +17,29 @@ class App extends Component {
         this.props = props;
         this._mounted = false;
         this.state = {
-            loading: true,
-            type: 'alpine',
+          loading: true,
         }
     }
 
-    newBox = (type) => {
+    handleNewBox = (type) => {
       ReactGA4.event({
         action: 'New-box',
         label: type,
       }); 
-      this._mounted = false;
       this.setState({
         loading: true,
-        type: type,
         error: undefined,
         statusCode: undefined,
         containerURL: undefined,
       });
+      this.createBox(type);
     }
 
-    componentDidMount() {
+    createBox(type) {
       if (process.env.REACT_APP_FORCED_STATE === "loading") {
         return;
       }
       if (process.env.REACT_APP_FORCED_STATE === "error") {
-        this._mounted = true;
         this.setState({
           loading: false,
           containerURL: undefined,
@@ -51,19 +48,14 @@ class App extends Component {
         });
         return;
       }
-
-      if (this._mounted) {
-        return;
-      }
-      this._mounted = true;
       const instance = axios.create({
         baseURL: this.props.apiURL,
         timeout: Number(this.props.apiTimeout),
       });
-      instance.post('/prod/boxes/', {type: this.state.type}).then(postResponse => {
-
+      instance.post('/prod/boxes/', {type: type}).then(postResponse => {
           axiosRetry(instance, {
             retries: 10, // number of retries
+            shouldResetTimeout: true,
             retryDelay: (retryCount) => {
                 console.log(`API check running box attempt: ${retryCount}`);
                 return retryCount * 1000; // time interval between retries
@@ -79,11 +71,16 @@ class App extends Component {
               error: undefined,
               statusCode: getResponse.data.statusCode,
             });
-
           }).catch(e => {
-            throw e;
+            this.setState({
+              loading: false,
+              containerURL: undefined,
+              statusCode: e.response?.status || e.code,
+              error: String(e),
+            });
+            console.error('API error', e);
+            Sentry.captureException(e);
           });
-
       }).catch(e => {
           this.setState({
             loading: false,
@@ -94,6 +91,14 @@ class App extends Component {
           console.error('API error', e);
           Sentry.captureException(e);
       });
+    }
+
+    componentDidMount() {
+      if (this._mounted) {
+        return;
+      }
+      this._mounted = true;
+      this.createBox('alpine');
     }
 
     render() {
@@ -108,7 +113,7 @@ class App extends Component {
 
         return (
           <>
-            <ENavbar newBox={this.newBox}/>
+            <ENavbar handleNewBox={this.handleNewBox} showAboutModal={true}/>
             {component}
           </>
         );
