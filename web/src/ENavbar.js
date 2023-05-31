@@ -94,14 +94,17 @@ function AboutModal(props) {
         <p>Linux boxes in your browser. Non-root, time limited. Side-project. All the love ❤️</p>
         <br />
         <p>
-          Hi there! you will have access to a remote Linux box (dockerized) in a
-          remote place. Root access is disabled but you have some tools at hand
-          like curl, telnet, htop... and no much more. Feel free to explore. 😉
+          Hi there! you will have access to a freshly new created remote Linux
+          box (dockerized) in a remote place. Root access is disabled but you
+          have some tools at hand like curl, telnet, htop... and no much more.
+          Feel free to explore. 😉 The box will be destroyed after you close
+          your browser or tab.
         </p>
         <p>
-          You are also time limited 😆 by only 10 minutes. This is a POC
-          project, so it has to be near cost-free for me until it makes me
-          millonaire.
+          You are also time limited 😆 by only 10 minutes; after that time, your
+          box will be destroyed and you will need to create another if you want
+          to continue. This is a POC project, so it has to be near cost-free
+          for me until it makes me millonaire.
         </p>
         <p>
           By default, it creates an Alpine Linux box. You can choose other
