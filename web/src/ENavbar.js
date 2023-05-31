@@ -2,6 +2,7 @@ import { Component } from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReactGA4 from "react-ga4";
@@ -21,13 +22,17 @@ class ENavbar extends Component {
     } 
 
     render() {
+      const newIcon = (<FontAwesomeIcon icon={faPlus} />);
       return (
           <>
             <Navbar fixed="top" bg="dark" variant="dark">
               <Container>
                 <Navbar.Brand href="/">Efimeral</Navbar.Brand>
                 <Nav className="justify-content-end">
-                  <Nav.Link title="New box" onClick={() => newBox()}><FontAwesomeIcon icon={faPlus} /></Nav.Link>
+                  <NavDropdown title={newIcon} bg="dark" variant="dark">
+                    <NavDropdown.Item onClick={() => this.props.newBox("alpine")}>Alpine</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => this.props.newBox("ubuntu")}>Ubuntu</NavDropdown.Item>
+                  </NavDropdown>  
                   <Nav.Link title="What's this?" onClick={() => this.setState({showAboutModal: true})}><FontAwesomeIcon icon={faCircleInfo} /></Nav.Link>
                   <Nav.Link title="Sign in" onClick={() => this.setState({showSignInModal: true})}><FontAwesomeIcon icon={faUser} /></Nav.Link>
                 </Nav>
@@ -44,14 +49,6 @@ class ENavbar extends Component {
           </>
       );
     }
-}
-
-function newBox() {
-  ReactGA4.event({
-    category: 'Refresh',
-    action: 'New-box',
-  }); 
-  window.location.reload(true);
 }
 
 function SignInModal(props) {

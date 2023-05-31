@@ -2,6 +2,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import axiosRetry from 'axios-retry';
 import * as Sentry from "@sentry/react";
+import ReactGA4 from "react-ga4";
 import './App.css';
 import Box from './Box';
 import Loader from './Loader';
@@ -17,7 +18,23 @@ class App extends Component {
         this._mounted = false;
         this.state = {
             loading: true,
+            type: 'alpine',
         }
+    }
+
+    newBox = (type) => {
+      ReactGA4.event({
+        action: 'New-box',
+        label: type,
+      }); 
+      this._mounted = false;
+      this.setState({
+        loading: true,
+        type: type,
+        error: undefined,
+        statusCode: undefined,
+        containerURL: undefined,
+      });
     }
 
     componentDidMount() {
@@ -43,7 +60,7 @@ class App extends Component {
         baseURL: this.props.apiURL,
         timeout: Number(this.props.apiTimeout),
       });
-      instance.post('/prod/boxes/').then(postResponse => {
+      instance.post('/prod/boxes/', {type: this.state.type}).then(postResponse => {
 
           axiosRetry(instance, {
             retries: 10, // number of retries
@@ -91,7 +108,7 @@ class App extends Component {
 
         return (
           <>
-            <ENavbar />
+            <ENavbar newBox={this.newBox}/>
             {component}
           </>
         );
