@@ -18,6 +18,7 @@ class App extends Component {
         this._mounted = false;
         this.state = {
           loading: true,
+          showTerminationAlert: false,
         }
     }
 
@@ -28,6 +29,7 @@ class App extends Component {
       }); 
       this.setState({
         loading: true,
+        showTerminationAlert: false,
         error: undefined,
         statusCode: undefined,
         containerURL: undefined,
@@ -45,6 +47,7 @@ class App extends Component {
           containerURL: undefined,
           statusCode: 500,
           error: new Error("Mocked error description"),
+          showTerminationAlert: false,
         });
         return;
       }
@@ -70,6 +73,7 @@ class App extends Component {
               containerURL: getResponse.data.url,
               error: undefined,
               statusCode: getResponse.data.statusCode,
+              showTerminationAlert: true,
             });
           }).catch(e => {
             this.setState({
@@ -77,6 +81,7 @@ class App extends Component {
               containerURL: undefined,
               statusCode: e.response?.status || e.code,
               error: String(e),
+              showTerminationAlert: false,
             });
             console.error('API error', e);
             Sentry.captureException(e);
@@ -87,6 +92,7 @@ class App extends Component {
             containerURL: undefined,
             statusCode: e.response?.status || e.code,
             error: String(e),
+            showTerminationAlert: false,
           });
           console.error('API error', e);
           Sentry.captureException(e);
@@ -113,7 +119,11 @@ class App extends Component {
 
         return (
           <>
-            <ENavbar handleNewBox={this.handleNewBox} showAboutModal={true}/>
+            <ENavbar
+              handleNewBox={this.handleNewBox}
+              showAboutModal={true}
+              showTerminationAlert={this.state.showTerminationAlert}
+            />
             {component}
           </>
         );
