@@ -29,6 +29,7 @@ jobs:
           REACT_APP_API_TIMEOUT: ${{ vars.REACT_APP_API_TIMEOUT }}
           REACT_APP_SENTRY_DSN: ${{ secrets.REACT_APP_SENTRY_DSN }}
           REACT_APP_GA_ID: ${{ secrets.REACT_APP_GA_ID }}
+          REACT_APP_BOX_TIMEOUT_MINUTES: ${{ secrets.REACT_APP_BOX_TIMEOUT_MINUTES }}
       - run: echo "efimeral.ar" > ./build/CNAME
       - name: Upload build artifacs
         uses: actions/upload-artifact@v3
