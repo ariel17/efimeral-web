@@ -14,7 +14,6 @@ class App extends Component {
 
     constructor(props) {
         super(props);
-        this.props = props;
         this._mounted = false;
         this.state = {
           loading: true,
@@ -38,10 +37,10 @@ class App extends Component {
     }
 
     createBox(type) {
-      if (process.env.REACT_APP_FORCED_STATE === "loading") {
+      if (this.props.forcedState === "loading") {
         return;
       }
-      if (process.env.REACT_APP_FORCED_STATE === "error") {
+      if (this.props.forcedState === "error") {
         this.setState({
           loading: false,
           containerURL: undefined,
@@ -53,7 +52,7 @@ class App extends Component {
       }
       const instance = axios.create({
         baseURL: this.props.apiURL,
-        timeout: Number(this.props.apiTimeout),
+        timeout: this.props.apiTimeout,
       });
       instance.post('/prod/boxes/', {type: type}).then(postResponse => {
           axiosRetry(instance, {
@@ -123,6 +122,7 @@ class App extends Component {
               handleNewBox={this.handleNewBox}
               showAboutModal={true}
               showTerminationAlert={this.state.showTerminationAlert}
+              boxTimeout={this.props.boxTimeout}
             />
             {component}
           </>

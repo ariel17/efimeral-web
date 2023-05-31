@@ -24,7 +24,9 @@ root.render(
   <React.StrictMode>
     <App
       apiURL={process.env.REACT_APP_API_URL}
-      apiTimeout={process.env.REACT_APP_API_TIMEOUT}
+      apiTimeout={Number(process.env.REACT_APP_API_TIMEOUT)}
+      forcedState={process.env.REACT_APP_FORCED_STATE}
+      boxTimeout={Number(process.env.REACT_APP_BOX_TIMEOUT_MINUTES)}
     />
     
   </React.StrictMode>

@@ -31,7 +31,7 @@ class ENavbar extends Component {
 
     getTerminationDatetime() {
       return DateTime.now().plus({
-        minutes: Number(process.env.REACT_APP_BOX_TIMEOUT_MINUTES)+1,
+        minutes: this.props.boxTimeout+1,
       }).toLocaleString(DateTime.TIME_SIMPLE);
     }
 
