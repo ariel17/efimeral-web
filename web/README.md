@@ -10,6 +10,9 @@ Use `.env.local` for development:
 REACT_APP_API_URL=http://production.url
 REACT_APP_API_TIMEOUT=60000
 REACT_APP_SENTRY_DSN=https://aaa@bbb.ingest.sentry.io/ccc
+REACT_APP_BOX_TIMEOUT_MINUTES=10  # The app will add 1 minute as +/-
+REACT_APP_GA_ID=xxxxx
+REACT_APP_FORCED_STATE=loading  # or error
 ```
 
 ## Use the mock server on development
