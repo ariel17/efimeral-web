@@ -50,6 +50,7 @@ class ENavbar extends Component {
                   <NavDropdown title={newIcon} bg="dark" variant="dark">
                     <NavDropdown.Item onClick={() => this.newBox("alpine")}>Alpine</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => this.newBox("ubuntu")}>Ubuntu</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => this.newBox("vscode")}>VS Code</NavDropdown.Item>
                   </NavDropdown>  
                   <Nav.Link title="What's this?" onClick={() => this.setState({showAboutModal: true})}><FontAwesomeIcon icon={faCircleInfo} /></Nav.Link>
                   <Nav.Link title="Sign in" onClick={() => this.setState({showSignInModal: true})}><FontAwesomeIcon icon={faUser} /></Nav.Link>
@@ -122,14 +123,17 @@ function AboutModal(props) {
       </Modal.Header>
       <Modal.Body>
         <h4>Efimeral</h4>
-        <p>Linux boxes in your browser. Non-root, time limited. Side-project. All the love ❤️</p>
+        <p>
+          Linux boxes in your browser. Non-root, time limited. Side-project.
+          All the love ❤️
+        </p>
         <br />
         <p>
           Hi there! you will have access to a freshly new created remote Linux
           box (dockerized) in a remote place. Root access is disabled but you
-          have some tools at hand like curl, telnet, htop... and no much more.
-          Feel free to explore. 😉 The box will be destroyed after you close
-          your browser or tab.
+          have some tools at hand like git, curl, telnet, htop... and no much
+          more. Feel free to explore. 😉 The box will be destroyed after you
+          close your browser or tab.
         </p>
         <p>
           You are also time limited 😆 by only 10 minutes; after that time, your
